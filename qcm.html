@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vérification du QCM</title>
+	<script>
+		function verifierReponses() {
+			var bonnesReponses = {
+				q1: ['b'],
+				q2: ['b'],
+				q3: ['c'],
+				q4: ['a', 'c'],
+				q5: ['a', 'b']
+			};
+
+			var score = 0;
+
+			for (var i = 1; i <= 5; i++) {
+				var question = 'q' + i;
+				var reponseSelectionnee = Array.from(document.getElementsByName(question))
+					.filter(function(input) {
+						return input.checked;
+					})
+					.map(function(input) {
+						return input.value;
+					});
+
+				if (reponseSelectionnee.length === bonnesReponses[question].length &&
+					reponseSelectionnee.every(function(val) {
+						return bonnesReponses[question].includes(val);
+					})) {
+					score++;
+				}
+			}
+
+			alert('Score : ' + score);
+		}
+	</script>
+</head>
+<body>
+	<h1>Vérification du QCM</h1>
+	<form>
+		<ol>
+			<li>
+				<h3>1. Phèdre paraît en 1677. Racine doit faire face à une « cabale ».</h3>
+				<div>
+					<input type="checkbox" name="q1" value="a">a. Phèdre paraît en 1677 et Racine doit faire face à une « cabale ». <br>
+					<input type="checkbox" name="q1" value="b">b. Lorsque Phèdre paraît en 1677, Racine doit faire face à une « cabale ». <br>
+					<input type="checkbox" name="q1" value="c">c. Phèdre paraît en 1677, quand Racine doit faire face à une « cabale ».
+				</div>
+			</li>
+			<li>
+				<h3>2. Zola élabore la série des Rougon-Macquart. Elle contient une vingtaine de romans.</h3>
+				<div>
+					<input type="checkbox" name="q2" value="a">a. Zola élabore la série des Rougon-Macquart, qui contient une vingtaine de romans. <br>
+					<input type="checkbox" name="q2" value="b">b. Zola élabore la série des Rougon-Macquart et elle contient une vingtaine de romans. <br>
+					<input type="checkbox" name="q2" value="c">c. Zola élabore la série des Rougon-Macquart. Celle-ci contient une vingtaine de romans.
+				</div>
+			</li>
+			<li>
+				<h3>3. Maupassant publie Le Horla en 1887. L’auteur aime jouer avec la peur.</h3>
+				<div>
+					<input type="checkbox" name="q3" value="a">a. L’auteur publie Le Horla en 1887 ; il aime jouer avec la peur.<br>
+					<input type="checkbox" name="q3" value="b">b. L’auteur aime jouer avec la peur et publie Le Horla en 1887.<br>
+					<input type="checkbox" name="q3" value="c">c. Maupassant, qui aime jouer avec la peur, publie Le Horla en 1887.
+				</div>
+			</li>
+			<li>
+				<h3>4. Candide est un conte philosophique de Voltaire. Il s’inscrit dans la lignée des Fables de La Fontaine.</h3>
+				<div>
+					<input type="checkbox" name="q4" value="a">a. S’inscrivant dans la lignée des Fables de La Fontaine, Candide est un conte philosophique de Voltaire. <br>
+					<input type="checkbox" name="q4" value="b">b. Candide est un conte philosophique de Voltaire et il s’inscrit dans la lignée des Fables de La Fontaine.<br>
+					<input type="checkbox" name="q4" value="c">c. Candide est un conte philosophique de Voltaire, qui s’inscrit dans la lignée des Fables de La Fontaine.
+				</div>
+			</li>
+			<li>
+				<h3>5. Le Diable au corps est un roman de Radiguet. Nous étudions un passage de ce roman.</h3>
+				<div>
+					<input type="checkbox" name="q5" value="a">a. Le passage que nous allons étudier appartient au Diable au corps de Radiguet. <br>
+					<input type="checkbox" name="q5" value="b">b. Le Diable au corps dont nous étudions un passage est un roman de Radiguet. <br>
+					<input type="checkbox" name="q5" value="c">c. Le Diable au corps est un roman de Radiguet dans lequel nous étudions un passage.
+				</div>
+			</li>
+		</ol>
+		<input type="button" value="Vérifier" onclick="verifierReponses()">
+	</form>
+</body>
+</html>
